@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 40px auto;
 }
 .Header {
   color: #443e3e;
@@ -13,26 +14,13 @@
   margin: 0 auto;
 }
 
-.Character-Card {
-  background: radial-gradient(circle at 50% 0,
-      rgba(122, 112, 102, 0.5),
-      rgba(0, 0, 0, 0) 70.71%),
-    radial-gradient(circle at 6.7% 75%,
-      rgba(167, 75, 30, 0.5),
-      rgba(36, 36, 65, 0) 70.71%),
-    radial-gradient(circle at 93.3% 75%,
-      rgba(90, 61, 53, 0.5),
-      rgba(43, 56, 43, 0) 70.71%) beige;
-  height: auto;
-  width: 75%;
-  margin: 10px auto;
-  padding: 20px 0 40px 0;
-  border: 3px solid rgb(32, 16, 2);
-  border-radius: 10px;
-}
 
-.Character-Card div {
-  margin: 5px;
-  text-align: left;
-  padding-left: 10%;
+.loader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 100vh;
+  margin: auto;
 }
