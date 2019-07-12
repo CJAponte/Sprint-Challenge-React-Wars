@@ -1,41 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from "axios";
+import Characters from "./components/Characters"
+import { Header, Container } from "semantic-ui-react";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      starwarsChars: []
-    };
-  }
+function App() {
+  const [starwarsChars, setStarWarsChars] = useState([])
 
-  componentDidMount() {
-    this.getCharacters('https://swapi.co/api/people/');
-  }
 
-  getCharacters = URL => {
-    // feel free to research what this code is doing.
-    // At a high level we are calling an API to fetch some starwars data from the open web.
-    // We then take that data and resolve it our state.
-    fetch(URL)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        this.setState({ starwarsChars: data.results });
-      })
-      .catch(err => {
-        throw new Error(err);
-      });
-  };
+  // componentDidMount() {
+  //   this.getCharacters('https://swapi.co/api/people/');
+  // }
 
-  render() {
+  useEffect(() => {
+    axios
+      .get(
+        "https://swapi.co/api/people/"
+      )
+      .then(res => setStarWarsChars(res.data.results))
+      
+      .catch(error => console.log(error))
+  }, [])
+
+  console.log('wow', starwarsChars)
     return (
-      <div className="App">
-        <h1 className="Header">React Wars</h1>
-      </div>
+      <Container className="App" style={{border: "1px solid black"}}>
+        <Header size="huge"> React Wars </Header>
+        <Characters starwarsChars={starwarsChars} />
+      </Container>
     );
   }
-}
+
 
 export default App;
